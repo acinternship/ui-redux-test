@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+html {
+  padding: 30px; }
+
+#listTask {
+  margin-top: 30px; }
+  #listTask .icon-listTaskItem {
+    margin-left: 20px; }
+    #listTask .icon-listTaskItem:hover {
+      color: dimgrey; }
+
+/*# sourceMappingURL=global.css.map */
