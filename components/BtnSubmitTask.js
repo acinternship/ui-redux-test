@@ -22,7 +22,9 @@ class BtnSubmitTask extends React.Component {
 	}
 	render() {
 		return(
-			<a className="waves-effect waves-light btn" onClick={this.addTask}>Add Task</a>
+			<div className="row">
+				<a className="waves-effect waves-light btn" onClick={this.addTask}>Add Task</a>
+			</div>
 		)
 	}
 }

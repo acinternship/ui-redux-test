@@ -2,6 +2,10 @@
   margin: 0;
   padding: 0; }
 
+.container .row {
+  margin-left: 0 !important;
+  margin-right: 0 !important; }
+
 #detail {
   background-color: #25afa2;
   width: 100%;
@@ -21,8 +25,13 @@
 #listTask {
   margin-top: 30px; }
   #listTask .icon-listTaskItem {
-    margin-left: 20px; }
+    margin-left: 10px;
+    color: dimgrey; }
     #listTask .icon-listTaskItem:hover {
-      color: dimgrey; }
+      color: #25afa2; }
+  #listTask .chip:hover {
+    background-color: #26a69a; }
+  #listTask .category {
+    margin-right: 15px; }
 
 /*# sourceMappingURL=global.css.map */

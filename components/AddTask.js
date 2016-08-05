@@ -16,8 +16,12 @@ class AddTask extends React.Component {
 	render() {
 		return(
 			<div>
-			<InputTask />
-			<BtnSubmitTask onClick={this.addTask.bind(this)} />
+				<div className="row">
+					<InputTask />
+				</div>
+				<div className="row">
+					<BtnSubmitTask onClick={this.addTask.bind(this)} />
+				</div>
 			</div>
 		)
 	}

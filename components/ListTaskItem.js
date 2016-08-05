@@ -36,6 +36,9 @@ class ListTaskItem extends React.Component{
 		return(
 			<li className="collection-item">
 				<div>
+					<div className="chip category">
+						{this.props.task.category}
+					</div>
 					{text}
 					<a href="#!" className="secondary-content">
 						<i className="material-icons icon-listTaskItem" onClick={this.onClickDownItem.bind(this)}>

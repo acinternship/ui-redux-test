@@ -7,11 +7,21 @@ const reducer = (state = [], action) => {
 
 	switch (action.type) {	  
 		case 'ADD_TASK':
+			var v_category
+		
+			if(action.id % 2 === 0) {
+				v_category = "Avenue Code"
+			} else if (action.id % 3 === 0){
+				v_category = "Client"
+			} else {
+				v_category = "PUC Minas - Coreu"
+			}
 			return [
 				...state,
 				{
 					id: action.id,  
 					text: action.text,
+					category: v_category,
 					deleted: false,
 					completed: false
 				}
@@ -35,14 +45,21 @@ const reducer = (state = [], action) => {
 				return task
 			});
 			
+		case 'EDIT_TASK':
+			return state.map(task => {
+				if(task.id === action.id) {
+					return {...task, text: action.text}
+				}
+				
+				return task
+			});
+			
 		case 'UP_TASK':
 			var tmpId = 0
 			var final = state.map(task => {
 				if(!task.deleted) {
-					if(task.id < action.id) {
-						if(task.id > tmpId) {
-							tmpId = task.id	
-						}
+					if(task.id < action.id && task.id > tmpId) {
+						tmpId = task.id	
 					}
 				}
 				
@@ -52,6 +69,14 @@ const reducer = (state = [], action) => {
 			var tmpTask = final[tmpId].text
 			final[tmpId].text = final[action.id].text
 			final[action.id].text = tmpTask
+			
+			tmpTask = final[tmpId].completed
+			final[tmpId].completed = final[action.id].completed
+			final[action.id].completed = tmpTask
+			
+			tmpTask = final[tmpId].category
+			final[tmpId].category = final[action.id].category
+			final[action.id].category = tmpTask
 			
 			return final;
       
@@ -60,10 +85,8 @@ const reducer = (state = [], action) => {
 
 			var final = state.map(task => {
 				if(!task.deleted) {
-					if(task.id > action.id) {
-						if(task.id < tmpId) {
-							tmpId = task.id	
-						}
+					if(task.id > action.id && task.id < tmpId) {
+						tmpId = task.id	
 					}
 				}
 				
@@ -73,6 +96,15 @@ const reducer = (state = [], action) => {
 			var tmpTask = final[tmpId].text
 			final[tmpId].text = final[action.id].text
 			final[action.id].text = tmpTask
+			
+			tmpTask = final[tmpId].completed
+			final[tmpId].completed = final[action.id].completed
+			final[action.id].completed = tmpTask
+			
+			tmpTask = final[tmpId].category
+			final[tmpId].category = final[action.id].category
+			final[action.id].category = tmpTask
+			
 			
 			return final;
     default:
@@ -83,9 +115,10 @@ const reducer = (state = [], action) => {
 const store = createStore(reducer)
 
 const Main = () => {  
-  ReactDOM.render(
-    <App store={store} />, document.getElementById('app')
-  )
+	console.log(store.getState())
+	ReactDOM.render(
+		<App store={store} />, document.getElementById('app')
+	)
 }
 
 store.subscribe(Main)

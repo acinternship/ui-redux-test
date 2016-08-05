@@ -18,6 +18,14 @@ class ListTask extends React.Component {
 		})
 	}
 	
+	onEditTask(p_id, p_text) {
+		this.props.store.dispatch({
+			type: 'EDIT_TASK',
+			id: p_id,
+			text: p_text
+		})
+	}
+	
 	onClickUpItem(p_id) {
 		this.props.store.dispatch({
 			type: 'UP_TASK',
@@ -45,7 +53,8 @@ class ListTask extends React.Component {
 		let rows = this.props.store.getState().map(
       	task => {
 				if(!task.deleted) {
-					return <ListTaskItem key={task.id} task={task} onToggleTask={this.onToggleTask} onDeleteTask={this.onDeleteTask} onClickUpItem={this.onClickUpItem.bind(this)} onClickDownItem={this.onClickDownItem.bind(this)} />	
+					
+					return <ListTaskItem key={task.id} task={task} onToggleTask={this.onToggleTask} onDeleteTask={this.onDeleteTask} onClickUpItem={this.onClickUpItem.bind(this)} onClickDownItem={this.onClickDownItem.bind(this)} onEditTask={this.onEditTask.bind(this)}/>	
 				}
 				
 			}
