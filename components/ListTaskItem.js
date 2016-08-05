@@ -10,6 +10,14 @@ class ListTaskItem extends React.Component{
 		this.props.onDeleteTask(this.props.task.id)
 	}
 	
+	onClickUpItem() {
+		this.props.onClickUpItem(this.props.task.id)
+	}
+	
+	onClickDownItem() {
+		this.props.onClickDownItem(this.props.task.id)
+	}
+	
 	constructor(props) {
 		super(props)
 		
@@ -30,6 +38,12 @@ class ListTaskItem extends React.Component{
 				<div>
 					{text}
 					<a href="#!" className="secondary-content">
+						<i className="material-icons icon-listTaskItem" onClick={this.onClickDownItem.bind(this)}>
+							keyboard_arrow_down
+						</i>
+						<i className="material-icons icon-listTaskItem" onClick={this.onClickUpItem.bind(this)}>
+							keyboard_arrow_up
+						</i>
 						<i className="material-icons icon-listTaskItem" onClick={this.onDeleteTask}>
 							delete
 						</i>
