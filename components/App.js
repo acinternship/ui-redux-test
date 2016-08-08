@@ -4,7 +4,6 @@ import ListTask from './ListTask';
 
 
 class App extends React.Component {
-	
 	render() {
 		return(
 			<div>

@@ -20,6 +20,7 @@ class BtnSubmitTask extends React.Component {
 		
 		this.addTask = this.addTask.bind(this)
 	}
+
 	render() {
 		return(
 			<div className="row">
